@@ -1,11 +1,24 @@
-import React from 'react';
+import React from "react";
+import Header from "./components/Header";
+import Home from "./pages/home/HeroSection";
 
-function App() {
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+
+const App = () => {
   return (
-    <div className="App">
-      App
-    </div>
+    <>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
   );
-}
+};
 
 export default App;
