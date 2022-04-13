@@ -1,4 +1,4 @@
-export const headerInfo = [
+export const data = [
   {
     menuLinks: ["Classes", "Lessons", "Libraries"],
     currentProfile: "teacher@school.org",

@@ -1,23 +1,13 @@
 import React, { useState } from "react";
-import { headerInfo } from "./data";
-import logoImage from "../images/logo.svg";
+import { data } from "./headerInfo";
+import TopMenu from "./TopMenu";
 
 const Header = () => {
-  const [currentUser, setCurrentUser] = useState(0);
-
-  const menuLinks = headerInfo[currentUser].menuLinks.map((menuItem, index) => {
-    return <li>{menuItem}</li>;
-  });
+  const [user, setUser] = useState(0);
 
   return (
     <>
-      <nav className="navbar">
-        <section class="menu-left">
-          <img src={logoImage}></img>
-          <ul>{menuLinks}</ul>
-        </section>
-        <section>{headerInfo[currentUser].currentProfile}</section>
-      </nav>
+      <TopMenu data={data[user]} />
     </>
   );
 };
