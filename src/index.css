@@ -86,6 +86,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  background-position: center center;
 }
 .hero-text {
   font-size: 2.5rem;
@@ -112,6 +113,72 @@ body {
   background-color: #000;
   opacity: 0.3;
 }
+.hamburger {
+  display: none;
+  margin-left: auto;
+  padding-right: 1rem;
+  width: 10%;
+}
+.hamburger svg {
+  transform: rotateY(180deg);
+  font-size: 1.5rem;
+}
+.mobile-menu-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 0;
+  background-color: #fff;
+
+  z-index: 999;
+  transition: all 0.4s ease;
+}
+#fullwidth {
+  width: 80vw;
+  border: 1px solid #000;
+}
+#zerowidth {
+  width: 0;
+  border: none;
+}
+.mobile-navbar {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+}
+.mobile-navbar .mobile-nav-links {
+  display: none;
+  list-style-type: none;
+}
+.mobile-navbar .mobile-nav-links li {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.mobile-navbar .mobile-nav-links li {
+  text-transform: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #242d38;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.mobile-nav-links li a:hover {
+  font-weight: bold;
+  font-size: 2.1rem;
+}
+.mobile-navbar .dropdown-container {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+#show-element {
+  display: block;
+}
+#hide-element {
+  display: none;
+}
 @media (max-width: 576px) {
   .hero-text {
     width: 90%;
@@ -121,7 +188,13 @@ body {
   .hero-text p {
     font-size: 1.2rem;
   }
-  .menu-right {
+  .navbar .menu-right {
     display: none;
+  }
+  .navbar .menu-left-links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
   }
 }

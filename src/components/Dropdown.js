@@ -6,7 +6,7 @@ const Dropdown = ({ stateChanger, user, dropdown, menuLinks }) => {
     user ? stateChanger(0) : stateChanger(1);
   };
   const dropdownMenu = menuLinks.map((menuLink, index) => {
-    if (index == 0) {
+    if (index === 0) {
       return (
         <li key={index} className="user-email" onClick={handleStateChange}>
           {menuLink}
