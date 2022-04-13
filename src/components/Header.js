@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <>
-      <TopMenu data={data[user]} />
+      <TopMenu data={data[user]} stateChanger={setUser} user={user} />
     </>
   );
 };

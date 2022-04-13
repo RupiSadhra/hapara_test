@@ -1,21 +1,30 @@
 import React from "react";
 
 const changeUser = () => {};
-const Dropdown = ({ menuLinks }) => {
+const Dropdown = ({ stateChanger, user, dropdown, menuLinks }) => {
+  const handleStateChange = () => {
+    user ? stateChanger(0) : stateChanger(1);
+  };
   const dropdownMenu = menuLinks.map((menuLink, index) => {
     if (index == 0) {
       return (
-        <li className="user-email" onClick={changeUser}>
+        <li key={index} className="user-email" onClick={handleStateChange}>
           {menuLink}
         </li>
       );
     } else {
-      return <li>{menuLink}</li>;
+      return <li key={index}>{menuLink}</li>;
     }
   });
   return (
     <>
-      <ul className="dropdown-container">{dropdownMenu}</ul>
+      <ul
+        className={`dropdown-container ${
+          dropdown ? "show-element" : "hide-element"
+        }`}
+      >
+        {dropdownMenu}
+      </ul>
     </>
   );
 };

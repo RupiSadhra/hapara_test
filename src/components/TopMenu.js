@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../images/logo.svg";
 import arrowUp from "../images/arrow-angle-up.svg";
 import arrowDown from "../images/arrow-angle-down.svg";
 import Dropdown from "./Dropdown";
 
-const TopMenu = ({ data }) => {
-  const showDropdown = () => {};
+const TopMenu = ({ data, stateChanger, user }) => {
+  const [dropdown, setDropdown] = useState(false);
+
+  const showDropdown = () => {
+    setDropdown(true);
+  };
+  const hideDropdown = () => {
+    setDropdown(false);
+  };
+
   const menuLinks = data.menuLinks.map((menuItem, index) => {
     return <li>{menuItem}</li>;
   });
@@ -14,13 +22,22 @@ const TopMenu = ({ data }) => {
     <>
       <nav className="navbar">
         <section class="menu-left centered">
-          <img src={logo}></img>
+          <img className="logo" src={logo}></img>
           <ul>{menuLinks}</ul>
         </section>
-        <section onMouseEnter={showDropdown} className="menu-right centered">
+        <section
+          onMouseEnter={showDropdown}
+          onMouseLeave={hideDropdown}
+          className="menu-right centered"
+        >
           {data.currentProfile}
           <img className="arrow" src={arrowDown}></img>
-          <Dropdown menuLinks={data.dropdownLinks} />
+          <Dropdown
+            stateChanger={stateChanger}
+            user={user}
+            dropdown={dropdown}
+            menuLinks={data.dropdownLinks}
+          />
         </section>
       </nav>
     </>
