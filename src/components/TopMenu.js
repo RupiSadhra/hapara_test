@@ -12,7 +12,7 @@ const TopMenu = ({ data, stateChanger, user }) => {
 
   const [hamburger, setHamburger] = useState(true);
 
-  const [logo, setLogo] = useState(false);
+  const [logo, setLogo] = useState(0);
 
   const closeMenu = () => {
     setHamburger(!hamburger);
@@ -30,13 +30,20 @@ const TopMenu = ({ data, stateChanger, user }) => {
   };
 
   const enterLogo = () => {
-    setLogo(true);
+    setLogo(1);
   };
   const leaveLogo = () => {
-    setLogo(false);
+    setLogo(0);
   };
 
   const menuLinks = data.menuLinks.map((menuItem, index) => {
+    if (index === 0) {
+      return (
+        <li key={index} className="default-color">
+          {menuItem}
+        </li>
+      );
+    }
     return <li key={index}>{menuItem}</li>;
   });
 
@@ -99,7 +106,10 @@ const TopMenu = ({ data, stateChanger, user }) => {
             {mobileMenuLinks}
             <li onClick={toggleDropdown} className="menu-right centered">
               {data.currentProfile}
-              <img className="arrow" src={arrowDown}></img>
+              <img
+                className="arrow"
+                src={`${!dropdown ? arrowDown : arrowUp}`}
+              ></img>
               <Dropdown
                 stateChanger={stateChanger}
                 user={user}

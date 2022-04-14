@@ -18,9 +18,8 @@ const Dropdown = ({
           {menuLink}
         </li>
       );
-    } else {
-      return <li key={index}>{menuLink}</li>;
     }
+    return <li key={index}>{menuLink}</li>;
   });
   return (
     <>
