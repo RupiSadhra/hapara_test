@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# Instructions to run the application.
+1. Clone the repository.
+2. Check for node_modules folder. If present then delete it.
+3. Check for package-lock.json file. If present remove that as well.
+4. Run `npm install` command.
+5. Start the project with `npm start` command
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
