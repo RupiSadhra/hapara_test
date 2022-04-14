@@ -1,7 +1,13 @@
 import React from "react";
 
 const changeUser = () => {};
-const Dropdown = ({ stateChanger, user, dropdown, menuLinks }) => {
+const Dropdown = ({
+  stateChanger,
+  user,
+  dropdown,
+  hideDropdown,
+  menuLinks,
+}) => {
   const handleStateChange = () => {
     user ? stateChanger(0) : stateChanger(1);
   };
@@ -19,6 +25,7 @@ const Dropdown = ({ stateChanger, user, dropdown, menuLinks }) => {
   return (
     <>
       <ul
+        onMouseLeave={hideDropdown}
         className={`dropdown-container ${
           dropdown ? "show-element" : "hide-element"
         }`}

@@ -39,14 +39,26 @@ body {
 }
 .menu-left {
   padding-left: 2rem;
+  transition: all 0.3s ease;
+}
+.menu-left li {
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .menu-right {
   padding-right: 2rem;
   position: relative;
   cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+.menu-right:hover,
+.menu-left li:hover {
+  color: #fff;
 }
 .arrow {
   padding-left: 0.5rem;
+  color: #a1a9b5;
 }
 .dropdown-container {
   position: absolute;
@@ -62,6 +74,7 @@ body {
   align-items: center;
   overflow: hidden;
   z-index: 9999;
+  color: #242d38;
 }
 .dropdown-container li {
   padding: 0.8rem 2rem;
@@ -69,6 +82,10 @@ body {
 .dropdown-container .user-email {
   border-bottom: 1px solid #a1a9b5;
   padding: 1rem 2rem;
+  transition: all 0.3s ease;
+}
+.dropdown-container .user-email:hover {
+  background-color: #eee;
 }
 .show-element {
   opacity: 1;
@@ -116,7 +133,6 @@ body {
 .hamburger {
   display: none;
   margin-left: auto;
-  padding-right: 1rem;
   width: 10%;
 }
 .hamburger svg {
@@ -179,6 +195,28 @@ body {
 #hide-element {
   display: none;
 }
+
+@media (max-width: 1300px) {
+  .hero-text {
+    width: 65%;
+    height: 90%;
+    font-size: 2rem;
+  }
+  .hero-text p {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-text {
+    width: 75%;
+    height: 100%;
+    font-size: 1.8rem;
+  }
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 576px) {
   .hero-text {
     width: 90%;
@@ -186,7 +224,7 @@ body {
     font-size: 1.5rem;
   }
   .hero-text p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .navbar .menu-right {
     display: none;

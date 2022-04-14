@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import logo from "../images/logo.svg";
+import logoWhite from "../images/logo.svg";
+import logoDark from "../images/logo-dark.svg";
 import arrowUp from "../images/arrow-angle-up.svg";
 import arrowDown from "../images/arrow-angle-down.svg";
 import Dropdown from "./Dropdown";
@@ -10,6 +11,8 @@ const TopMenu = ({ data, stateChanger, user }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const [hamburger, setHamburger] = useState(true);
+
+  const [logo, setLogo] = useState(false);
 
   const closeMenu = () => {
     setHamburger(!hamburger);
@@ -24,6 +27,13 @@ const TopMenu = ({ data, stateChanger, user }) => {
 
   const toggleDropdown = () => {
     setDropdown(!dropdown);
+  };
+
+  const enterLogo = () => {
+    setLogo(true);
+  };
+  const leaveLogo = () => {
+    setLogo(false);
   };
 
   const menuLinks = data.menuLinks.map((menuItem, index) => {
@@ -42,20 +52,27 @@ const TopMenu = ({ data, stateChanger, user }) => {
     <>
       <nav className="navbar">
         <section className="menu-left centered">
-          <img className="logo" src={logo}></img>
+          <img
+            onMouseEnter={enterLogo}
+            onMouseLeave={leaveLogo}
+            className="logo"
+            src={`${logo ? logoDark : logoWhite}`}
+          ></img>
           <ul className="menu-left-links">{menuLinks}</ul>
         </section>
-        <section
-          onMouseEnter={showDropdown}
-          onMouseLeave={hideDropdown}
-          className="menu-right centered"
-        >
-          {data.currentProfile}
-          <img className="arrow" src={arrowDown}></img>
+        <section className="menu-right centered">
+          <div onMouseEnter={showDropdown} onClick={toggleDropdown}>
+            {data.currentProfile}
+            <img
+              className="arrow"
+              src={`${!dropdown ? arrowDown : arrowUp}`}
+            ></img>
+          </div>
           <Dropdown
             stateChanger={stateChanger}
             user={user}
             dropdown={dropdown}
+            hideDropdown={hideDropdown}
             menuLinks={data.dropdownLinks}
           />
         </section>
@@ -68,6 +85,8 @@ const TopMenu = ({ data, stateChanger, user }) => {
           {hamburger ? <MdSort /> : <MdClear />}
         </div>
       </nav>
+
+      {/* mobile menu */}
       <div
         className="mobile-menu-container center-element"
         id={hamburger ? "zerowidth" : "fullwidth"}
